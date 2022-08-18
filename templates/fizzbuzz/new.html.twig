@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Fizzbuzz{% endblock %}
+
+{% block body %}
+    <h1>Create new Fizzbuzz</h1>
+
+    {{ include('fizzbuzz/_form.html.twig') }}
+
+    <a href="{{ path('app_fizzbuzz_index') }}">back to list</a>
+{% endblock %}

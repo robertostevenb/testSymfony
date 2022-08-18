@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fizzbuzz{% endblock %}
+
+{% block body %}
+    <h1>Fizzbuzz</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fizzbuzz.id }}</td>
+            </tr>
+            <tr>
+                <th>Startnumber</th>
+                <td>{{ fizzbuzz.startnumber }}</td>
+            </tr>
+            <tr>
+                <th>Finalnumber</th>
+                <td>{{ fizzbuzz.finalnumber }}</td>
+            </tr>
+            <tr>
+                <th>Datehour</th>
+                <td>{{ fizzbuzz.datehour ? fizzbuzz.datehour|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Fizzbuzztext</th>
+                <td>{{ fizzbuzz.fizzbuzztext }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fizzbuzz_index') }}">back to list</a>
+
+    <a href="{{ path('app_fizzbuzz_edit', {'id': fizzbuzz.id}) }}">edit</a>
+
+    {{ include('fizzbuzz/_delete_form.html.twig') }}
+{% endblock %}

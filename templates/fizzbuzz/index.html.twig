@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fizzbuzz index{% endblock %}
+
+{% block body %}
+    <h1>Fizzbuzz index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Startnumber</th>
+                <th>Finalnumber</th>
+                <th>Datehour</th>
+                <th>Fizzbuzztext</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fizzbuzz in fizzbuzzs %}
+            <tr>
+                <td>{{ fizzbuzz.id }}</td>
+                <td>{{ fizzbuzz.startnumber }}</td>
+                <td>{{ fizzbuzz.finalnumber }}</td>
+                <td>{{ fizzbuzz.datehour ? fizzbuzz.datehour|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ fizzbuzz.fizzbuzztext }}</td>
+                <td>
+                    <a href="{{ path('app_fizzbuzz_show', {'id': fizzbuzz.id}) }}">show</a>
+                    <a href="{{ path('app_fizzbuzz_edit', {'id': fizzbuzz.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fizzbuzz_new') }}">Create new</a>
+{% endblock %}

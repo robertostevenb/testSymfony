@@ -13,10 +13,22 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/')]
 class FizzbuzzController extends AbstractController
 {
-    #[Route('/desafio1', name: 'app_fizzbuzz_index', methods: ['GET'])]
+    #[Route('/', name: 'app_fizzbuzz_index', methods: ['GET'])]
     public function index(FizzBuzzRepository $fizzBuzzRepository): Response
     {
-        return $this->render('fizzbuzz/index.html.twig', [
+        return $this->render('fizzbuzz/index.html.twig');
+    }
+
+    #[Route('/desafio1/fizz/buzz', name: 'app_fizzbuzz_desafio1', methods: ['GET'])]
+    public function index(FizzBuzzRepository $fizzBuzzRepository): Response
+    {
+        return $this->render('fizzbuzz/desafio1.html.twig');
+    }
+
+    #[Route('/desafio2', name: 'app_fizzbuzz_list', methods: ['GET'])]
+    public function list(FizzBuzzRepository $fizzBuzzRepository): Response
+    {
+        return $this->render('fizzbuzz/list.html.twig', [
             'fizzbuzzs' => $fizzBuzzRepository->findAll(),
         ]);
     }

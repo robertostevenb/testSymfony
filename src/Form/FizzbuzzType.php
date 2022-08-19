@@ -14,8 +14,6 @@ class FizzbuzzType extends AbstractType
         $builder
             ->add('startnumber')
             ->add('finalnumber')
-            ->add('datehour')
-            ->add('fizzbuzztext')
         ;
     }
 

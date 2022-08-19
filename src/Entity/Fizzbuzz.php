@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Fizzbuzz
  *
- * @ORM\Table(name="FizzBuzz")
+ * @ORM\Table(name="FizzBuzzTool")
  * @ORM\Entity(repositoryClass="App\Repository\FizzBuzzRepository")
  */
 class Fizzbuzz
@@ -41,7 +41,7 @@ class Fizzbuzz
      *
      * @ORM\Column(name="dateHour", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
      */
-    private $datehour = 'CURRENT_TIMESTAMP';
+    private $datehour;
 
     /**
      * @var string

@@ -5,28 +5,44 @@ namespace App\Controller;
 use App\Entity\Fizzbuzz;
 use App\Form\FizzbuzzType;
 use App\Repository\FizzBuzzRepository;
+use App\Tools\FizzBuzzTool;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use DateTime;
 
 #[Route('/')]
 class FizzbuzzController extends AbstractController
 {
+    /**
+     * @var FizzBuzzTool
+     */
+    private $formatter;
+
+    /**
+     * @param FizzBuzzTool $formatter
+     */
+    public function __construct(
+        FizzBuzzTool $formatter
+    )
+    {
+        $this->formatter = $formatter;
+    }
+
     #[Route('/', name: 'app_fizzbuzz_index', methods: ['GET'])]
     public function index(FizzBuzzRepository $fizzBuzzRepository): Response
     {
-        return $this->render('fizzbuzz/index.html.twig', [
-        ]);
+        return $this->render('fizzbuzz/index.html.twig');
     }
 
-    #[Route('/desafio1/fizz/buzz', name: 'app_fizzbuzz_desafio1', methods: ['GET'])]
-    public function desafio1(FizzBuzzRepository $fizzBuzzRepository): Response
+    #[Route('/desafio1/fizz/buzz', name: 'app_fizzbuzz_desafio1', methods: ['GET', 'POST'])]
+    public function desafio1(): Response
     {
         return $this->render('fizzbuzz/desafio1.html.twig');
     }
 
-    #[Route('/desafio2', name: 'app_fizzbuzz_list', methods: ['GET'])]
+    #[Route('/desafio2', name: 'app_fizzbuzz_list', methods: ['GET', 'POST'])]
     public function list(FizzBuzzRepository $fizzBuzzRepository): Response
     {
         return $this->render('fizzbuzz/list.html.twig', [
@@ -42,9 +58,16 @@ class FizzbuzzController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $date = new DateTime('now');
+            $fizzbuzz->setDatehour($date);
+            $fizzbuzz->setFizzbuzztext(
+                $this->formatter->fizzBuzzString(
+                    $fizzbuzz->getStartnumber(),
+                    $fizzbuzz->getFinalnumber()
+            ));
             $fizzBuzzRepository->add($fizzbuzz, true);
 
-            return $this->redirectToRoute('app_fizzbuzz_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_fizzbuzz_list', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('fizzbuzz/new.html.twig', [
@@ -68,9 +91,16 @@ class FizzbuzzController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $date = new DateTime('now');
+            $fizzbuzz->setDatehour($date);
+            $fizzbuzz->setFizzbuzztext(
+                $this->formatter->fizzBuzzString(
+                    $fizzbuzz->getStartnumber(),
+                    $fizzbuzz->getFinalnumber()
+            ));
             $fizzBuzzRepository->add($fizzbuzz, true);
 
-            return $this->redirectToRoute('app_fizzbuzz_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_fizzbuzz_list', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('fizzbuzz/edit.html.twig', [

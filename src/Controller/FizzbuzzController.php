@@ -116,6 +116,6 @@ class FizzbuzzController extends AbstractController
             $fizzBuzzRepository->remove($fizzbuzz, true);
         }
 
-        return $this->redirectToRoute('app_fizzbuzz_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_fizzbuzz_list', [], Response::HTTP_SEE_OTHER);
     }
 }

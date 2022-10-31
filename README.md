@@ -1,30 +1,23 @@
-# Test Symfony
-## _Desafío 1: FizzBuzz Twig Extension._
-Utilizando la tecnología Twig de Symfony deberás crear una extensión que permita mostrar en pantalla
-una serie de 30 números a partir del número agregado en la extensión. La particularidad es que deberás
-imprimir en pantalla los números correlativos y para todo número múltiplo de 3 deberás imprimir Fizz,
-para los números múltiplos de 5 deberás imprimir Buzz, y finalmente para los números que sean
-múltiplos de 3 y 5 deberás imprimir FizzBuzz
+# Symfony Test
+## _Challenge 1: FizzBuzz Twig Extension._
+Using the Twig technology of Symfony you must create an extension that allows you to display on screen a series of 30 numbers from the number added in the extension. The particularity is that you must print on screen the correlative numbers and for all numbers multiple of 3 you must print Fizz, for numbers multiple of 5 you must print Buzz, and finally for numbers that are multiples of 3 and 5 you must print FizzBuzz.
 
-En pantalla deberá verse de la siguiente manera si el número inicial es 1:
+The screen should look like this if the initial number is 1:
 
 ```sh
 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz, 16, 17, Fizz, 19, Buzz, Fizz,
 22, 23, Fizz, Buzz, 26, Fizz, 28, 29, FizzBuzz
 ```
 
-La ruta para mostrar el resultado deberá ser: **/desafio1/fizz/buzz**
+The path to display the result should be: **/desafio1/fizz/buzz**
 
-## _Desafío 2: FizzBuzz Service._
-En tu proyecto de Symfony deberás crear un Servicio que retorne una serie de números con el
-concepto FizzBuzz igual al desafío anterior. Este servicio deberá ser llamado desde un **Controlador** el
-cual mostrará por pantalla el resultado en la ruta: **/desafio2/fizz/buzz**
+## Challenge 2: FizzBuzz Service._
+In your Symfony project you must create a Service that returns a series of numbers with the concept FizzBuzz like the previous challenge. This service must be called from a Controller which will display the result in the route: **/desafio2/fizz/buzz**
 
-**El servicio recibirá 2 parámetros: N° inicial, N° de término**
+**The service will receive 2 parameters: Start number, End number**
 
-Los parámetros deberán ser enviados por medio de un formulario (FormType) y almacenados en una
-entidad que contenga como atributos:
-> - Numero inicial
-> - Numero final
-> - Hora y fecha de ingreso de registro
-> - FizzBuzz generado (String)
+The parameters must be sent by means of a form (FormType) and stored in an entity containing as attributes:
+> - Initial number
+> - End number
+> - Time and date of registration entry
+> - FizzBuzz generated (String)
